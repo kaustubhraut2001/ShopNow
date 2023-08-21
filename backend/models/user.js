@@ -25,11 +25,11 @@ const userSchema = new mongoose.Schema({
     avatar: {
         public_id: {
             type: String,
-            required: true
+            required: false
         },
         url: {
             type: String,
-            required: true
+            required: false
         }
     },
     role: {
@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema({
 })
 
 // Encrypting password before saving user
-userSchema.pre('save', async function (next) {
+userSchema.pre('save', async function(next) {
     if (!this.isModified('password')) {
         next()
     }
@@ -55,19 +55,19 @@ userSchema.pre('save', async function (next) {
 })
 
 // Compare user password
-userSchema.methods.comparePassword = async function (enteredPassword) {
+userSchema.methods.comparePassword = async function(enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password)
 }
 
 // Return JWT token
-userSchema.methods.getJwtToken = function () {
+userSchema.methods.getJwtToken = function() {
     return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_TIME
     });
 }
 
 // Generate password reset token
-userSchema.methods.getResetPasswordToken = function () {
+userSchema.methods.getResetPasswordToken = function() {
     // Generate token
     const resetToken = crypto.randomBytes(20).toString('hex');
 
