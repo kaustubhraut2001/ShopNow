@@ -12,15 +12,16 @@ export const stripeCheckoutSession = catchAsyncErrors(
     const line_items = body?.orderItems?.map((item) => {
       return {
         price_data: {
-          currency: "usd",
+          currency: "inr",
           product_data: {
             name: item?.name,
             images: [item?.image],
             metadata: { productId: item?.product },
           },
+          tax_rates: ["txr_1OKjwrSG2HjEXkcy0GrllHcf"],
           unit_amount: item?.price * 100,
         },
-        tax_rates: ["txr_1LlBSDA7jBHqn8SB8z4waAin"],
+
         quantity: item?.quantity,
       };
     });
@@ -29,8 +30,8 @@ export const stripeCheckoutSession = catchAsyncErrors(
 
     const shipping_rate =
       body?.itemsPrice >= 200
-        ? "shr_1LlBW5A7jBHqn8SBG2fsAWwT"
-        : "shr_1NQYwEA7jBHqn8SBs5alau8k";
+        ? "shr_1OKjxjSG2HjEXkcylwohwpI6"
+        : "shr_1OKjxjSG2HjEXkcylwohwpI6";
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],

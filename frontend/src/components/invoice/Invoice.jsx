@@ -53,15 +53,15 @@ const Invoice = () => {
             </div>
             <h1>INVOICE # {order?._id}</h1>
             <div id="company" className="clearfix">
-              <div>ShopIT</div>
+              <div>ShopNow</div>
               <div>
-                455 Foggy Heights,
+               India
                 <br />
-                AZ 85004, US
+                India
               </div>
-              <div>(602) 519-0450</div>
+              <div>(+91) 519961 0280</div>
               <div>
-                <a href="mailto:info@shopit.com">info@shopit.com</a>
+                <a href="mailto:info@shopnow.com">info@shopnow.com</a>
               </div>
             </div>
             <div id="project">
@@ -81,7 +81,7 @@ const Invoice = () => {
               </div>
               <div>
                 <span>DATE</span>{" "}
-                {new Date(order?.createdAt).toLocaleString("en-US")}
+                {new Date(order?.createdAt).toLocaleString("en-inr")}
               </div>
               <div>
                 <span>Status</span> {paymentInfo?.status}
