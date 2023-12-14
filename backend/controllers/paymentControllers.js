@@ -78,7 +78,7 @@ const getOrderItems = async (line_items) => {
   });
 };
 
-// Create new order after payment   =>  /api/v1/payment/webhook
+
 export const stripeWebhook = catchAsyncErrors(async (req, res, next) => {
   try {
     const signature = req.headers["stripe-signature"];
