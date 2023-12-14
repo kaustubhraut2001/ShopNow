@@ -1,5 +1,7 @@
 # ShopNow E-commerce Project
 
+### Live Link: https://shop-now-frontend-pink.vercel.app/ 
+
 > Complete E-commerce site built with Node.js, React, Redux, Express, MongoDB
 
  [MERN Stack Full Ecommerce Site - Using React, Redux, Node.js]
