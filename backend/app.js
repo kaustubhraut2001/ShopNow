@@ -4,12 +4,14 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import { connectDatabase } from "./config/dbConnect.js";
 import errorMiddleware from "./middlewares/errors.js";
+import cors from "cors";
 
 import path from "path";
 
 const __filename = fileURLToPath(
     import.meta.url);
 const __dirname = path.dirname(__filename);
+app.use(cors());
 
 // Handle Uncaught exceptions
 process.on("uncaughtException", (err) => {
