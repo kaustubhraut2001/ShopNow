@@ -4,14 +4,17 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import { connectDatabase } from "./config/dbConnect.js";
 import errorMiddleware from "./middlewares/errors.js";
-// import cors from "cors";
+import cors from "cors";
 
 import path from "path";
 
 const __filename = fileURLToPath(
     import.meta.url);
 const __dirname = path.dirname(__filename);
-// app.use(cors());
+app.use(cors({
+    origin: "https://shop-now-frontend-pink.vercel.app/",
+    credentials: true,
+}));
 
 // Handle Uncaught exceptions
 process.on("uncaughtException", (err) => {
@@ -73,4 +76,7 @@ process.on("unhandledRejection", (err) => {
     server.close(() => {
         process.exit(1);
     });
+});
+server.close(() => {
+    process.exit(1);
 });
